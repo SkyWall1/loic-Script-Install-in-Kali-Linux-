@@ -13,9 +13,13 @@
 # Note: the packages should work on newer Debian versions too but we only test the ones listed below.
 # Debian 10 (i386, amd64, armhf, armel) <for> Debian 11 Bullseye
 sudo apt install apt-transport-https dirmngr gnupg ca-certificates
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+sudo apt-get install gnupg
+sudo wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+sudo echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 sudo apt update
+sudo apt-get install -y mongodb-org
 GIT_REPO=https://github.com/NewEraCracker/LOIC.git
 GIT_BRANCH=master
 DEB_MONO_PKG="monodevelop liblog4net-cil-dev mono-devel mono-runtime-common mono-runtime libmono-system-windows-forms4.0-cil"
