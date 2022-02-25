@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script installs, updates and runs LOIC on Kali Linux.
 # Supported distributions:
-#    * Debian Bullseye ID=kali 	VERSION="2021.4"
+#    * Debian Bullseye ID=kali 	VERSION="2022"
 #
 # Before using you must install monodevelop from:
 # https://www.monodevelop.com/download/#fndtn-download-lin
