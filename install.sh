@@ -15,14 +15,21 @@
 sudo apt install apt-transport-https dirmngr gnupg ca-certificates
 sudo wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 sudo apt-get install gnupg
-sudo wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+sudo apt-get install -y mongodb-org mongodb-org-database mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
+sudo apt-get install gnupg2
+sudo wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 sudo echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-sudo echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo echo "deb http://ftp.de.debian.org/debian buster main"
 sudo apt update
 sudo apt-get install -y mongodb-org
+sudo systemctl start mongod
+sudo systemctl enable mongod
+sudo apt --fix-broken install
 GIT_REPO=https://github.com/NewEraCracker/LOIC.git
 GIT_BRANCH=master
-DEB_MONO_PKG="monodevelop liblog4net-cil-dev mono-devel mono-runtime-common mono-runtime libmono-system-windows-forms4.0-cil"
+DEB_MONO_PKG="monodevelop mono-devel mono-runtime-common mono-runtime libmono-system-windows-forms4.0-cil"
 FED_MONO_PKG="mono-basic mono-devel monodevelop mono-tools"
 lower() {
     tr '[A-Z]' '[a-z]'
